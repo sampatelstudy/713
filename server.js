@@ -7,6 +7,8 @@ const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
 
+app.use('/products', require('./routes/productsRoutes'));
+
 const port = 3009;
 
 app.listen(port, () =>
