@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const { countRequests } = require('./middlewares/countRequests');
 
 const app = express();
 
@@ -7,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.use('/products', require('./routes/productsRoutes'));
+app.use('/products', countRequests, require('./routes/productsRoutes'));
 
 const port = 3009;
 
